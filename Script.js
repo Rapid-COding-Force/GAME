@@ -71,3 +71,6 @@ setInterval(() => {
 function updateScore(score) {
     scoreCont.innerHTML = "Your Score: " + score
 }
+
+var vid = document.getElementById("music.mp3");
+vid.volume = 0.2;
