@@ -1,8 +1,13 @@
 score = 0;
 cross = true;
+currentplayer = '';
 
 audio = new Audio('music.mp3');
 audiogo = new Audio('gameover.mp3');
+
+// Get new player.
+get_player();
+
 setTimeout(() => {
     audio.play()
 }, 1000);
@@ -49,6 +54,9 @@ setInterval(() => {
             audiogo.pause();
             audio.pause();
         }, 1000);
+
+        // added code.
+        update_leaderboard(  currentplayer , score );
     }
     else if (offsetX < 145 && cross) {
         score += 1;
@@ -70,4 +78,20 @@ setInterval(() => {
 
 function updateScore(score) {
     scoreCont.innerHTML = "Your Score: " + score
+}
+
+function get_player() {
+    currentplayer = prompt( "Please enter your name", "Harry Potter" );
+}
+
+function update_leaderboard( player,score ) { 
+    jQuery.ajax({
+        url:"functions.php",    //the page containing php script
+        type: "post",    //request type,
+        dataType: 'json',
+        data: { player: player, score: score, action:'add_score' },
+        success:function(result){
+            console.log(result.result);
+        }
+    });
 }

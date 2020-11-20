@@ -64,6 +64,43 @@ body{
     border-radius: 10px;
 }
 
+#leaderboard {
+    font-size: 25px;
+    color: #54212f;
+    font-weight: bold;
+    position: absolute;
+    top: 31px;
+    border: 2px solid black;
+    padding: 10px;
+    font-family: 'Ubuntu', sans-serif;
+    border-radius: 10px;
+    margin-left: 21px;
+}
+
+.scoreboard {
+    margin-top: 90px;
+}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 75%;
+    margin: auto;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: center;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+#leaderboard a {
+    text-decoration: none;
+    color: #000;
+}
 @keyframes dino{
     0%{
         bottom: 0;
