@@ -1,3 +1,5 @@
+
+
 score = 0;
 cross = true;
 
@@ -74,3 +76,8 @@ function updateScore(score) {
 
 var vid = document.getElementById("music.mp3");
 vid.volume = 0.2;
+  
+
+   
+  
+
