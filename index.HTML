@@ -27,6 +27,19 @@ Nav Bar With icons
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
 
+    <script src="Script.js"></script>
+<script type="text/javascript">
+
+
+    $(document).ready(function(){
+        $(".btn .fa-play-circle-o").on('click', function(){
+
+            $(".fa-pause-circle-o").fadeIn();
+            $("#myMusic")[0].play();
+        });
+    });
+    </script> 
+
    
    
 
@@ -38,41 +51,17 @@ Nav Bar With icons
     
   
 
-    <div class="dropdown">
-        <div>
-        <button class="dropbtn">Settings</button>
-        <div class="dropdown-content">
+  <div class="music">
+    <audio id="myMusic" src="file:///C:/Users/user/Documents/GitHub/GAME/music.mp3" loop=""></audio>
+    <button class="btn">
 
-        <a href="#">LeaderBoard</a>
 
-            <a href="#">Home</a>
-          <div class="icon">
-            <i class="fa fa-home" aria-hidden="true"></i>
-            </div>
+        <i class="fa fa-play-circle-o">play</i>
+        <i class="fa fa-pause-circle-o">pause</i>
+    
 
-          <a href="#">Music on</a>
-          <div class="icon">
-            <i class="fa fa-volume-up" aria-hidden="true"></i>
-            </div>
-
-          <a href="#">Music Off</a>
-          <div class="icon">
-            <i class="fa fa-volume-mute" aria-hidden="true"></i>
-            </div>
-
-          <a href="#">Pause</a>
-          <div class="icon">
-            <i class="fa fa-pause" aria-hidden="true"></i>
-            </div>
-
-       
-          
-          
-        </div>
-        
-   
-       
-      </div>
+    </button>
+</div>
 
 
     <div class="gameContainer">
