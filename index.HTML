@@ -11,7 +11,10 @@ Nav Bar With icons
 <link rel="stylesheet" type="text/css" href="Style.css">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
+<link rel="stylesheet" type="text/css" href="css/style.css">
+
 <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+
 
 </head>
 </body>
@@ -27,42 +30,28 @@ Nav Bar With icons
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
 
-    <script src="Script.js"></script>
-<script type="text/javascript">
-
-
-    $(document).ready(function(){
-        $(".btn .fa-play-circle-o").on('click', function(){
-
-            $(".fa-pause-circle-o").fadeIn();
-            $("#myMusic")[0].play();
-        });
-    });
-    </script> 
-
+<script src="js/custom.js"> </script>
    
-   
-
 
 </head>
 
 
 <body>
     
+<div>
+    <audio id="audio">
+        <source src="music/audio.mp3" type="audio/mpeg">
+    </audio>
+    <button id="playPauseBTN" onclick="playPause()">Play&#9658;</button>
+    &nbsp;
+    &nbsp;
+    <button onclick="stop()">Stop&#9611;</button>
+</div>
+    
   
 
-  <div class="music">
-    <audio id="myMusic" src="file:///C:/Users/user/Documents/GitHub/GAME/music.mp3" loop=""></audio>
-    <button class="btn">
 
-
-        <i class="fa fa-play-circle-o">play</i>
-        <i class="fa fa-pause-circle-o">pause</i>
     
-
-    </button>
-</div>
-
 
     <div class="gameContainer">
         <div class="gameOver">Welcome to Dino Dash adventures </div>

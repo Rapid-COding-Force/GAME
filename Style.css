@@ -1,5 +1,35 @@
 
 
+body {
+
+    font-family: arial;
+    font-size: 20px;
+    margin:0;
+    background: #fff;
+   
+    background:#000;
+   top: 100px;
+    left: 100px;
+}
+
+button {
+
+    padding: 10px 25px;
+    font-size: 20px;
+   
+    text-align:center;
+    cursor: pointer;
+    background: linear-gradient(to right bottom,#273c75,#079992);
+    color: black;
+    border-radius: 5px;
+    border: 0px;
+    height: 60px;
+
+
+}
+
+
+
 *{
     margin: 0;
     padding:0;
