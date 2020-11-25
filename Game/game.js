@@ -14,6 +14,7 @@ get_player();
 function restart() {
     dead = false;
     scoreIncrease = 0;
+    highScore;
     gameOver.innerHTML = "";
     moveObjects();
     hit();
