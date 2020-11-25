@@ -120,7 +120,7 @@ function increaseScore(scoreIncrease){
 }
 
 function get_player() {
-    currentplayer = prompt( "Please enter your name", "Harry Potter" );
+    currentplayer = prompt( "Please enter your name", "" );
 }
 
 function update_leaderboard( player,score ) { 
