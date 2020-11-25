@@ -1,2 +1,0 @@
-# Game : Dino Dash
-Its a linear game with the inspiration from the offline game on Google chrome with improved graphics and online score board system. Its a randomly generated obstacle course game that infinitly loops until the player fails. The game is designed to speed up overtime with the intention of keeping the player engaged while also maintaining competitive difficulty. More updates will follow soon.
