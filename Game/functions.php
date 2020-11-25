@@ -4,10 +4,10 @@
 /**
  * Create Connection to database.
  */
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "js_game";
+    $servername = "remotemysql.com";
+    $username = "Wvp6uzQ04d";
+    $password = "yILUYZalke";
+    $dbname = "Wvp6uzQ04d";
 
     // Create connection
     $conn = new mysqli($servername, $username, $password, $dbname);
