@@ -93,6 +93,7 @@ function dinoDuck() { // Makes dino duck
 }
 
 scoreIncrease = 0;
+highScore = 0;
 var hit = hit()
 function hit(){
 setInterval(function(){ // Ends game and also increases score
@@ -103,7 +104,10 @@ setInterval(function(){ // Ends game and also increases score
         dead = true;
         gameOverMusic.play();
         gameOver.innerHTML = "Game Over! Click on the Restart Button"
-        update_leaderboard(  currentplayer , parseInt(scoreIncrease));
+        if (scoreIncrease>highScore){
+            highScore = parseInt(scoreIncrease)
+            update_leaderboard(currentplayer , highScore);
+        }
         delete scoreIncrease; moveObjects = undefined;
         return;
     }
