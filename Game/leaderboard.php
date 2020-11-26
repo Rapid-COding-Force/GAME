@@ -14,6 +14,7 @@ require_once( 'functions.php' );
     <div id="gameContainer">
         <div id="gameOver"></div>
         <button id="leaderboard" class="button button4"><a href="game.php">Go to Game</a></button>
+        <button id="menu" class="button button5"><a href="menu.php">Back to Main Menu</a></button>
         <div class="scoreboard">
             <table>
                 <tr>
