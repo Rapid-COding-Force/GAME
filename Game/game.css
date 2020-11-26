@@ -1,4 +1,8 @@
-.button {
+/************************************************************************
+ *  Syntax created for button implementations to access different menus
+ */ 
+
+.button {  /* Creates a class called button to use to make a simple button style format */
     border: none;
     padding: 16px 32px;
     text-align: center;
@@ -8,29 +12,19 @@
     transition-duration: 0.4s;
     cursor: pointer;
   }
-
-#dinoDash {
-    text-align: center;
-    font-size: 300%;
-    font-family: monospace;
-}
-
-#text {
-    text-align: center;
-    font-size: 150%;
-    font-family: monospace;
-}
   
-  .button1 {
+  .button1 { /* Creates a class that styles the button when not hovering over it */
     background-color: transparent;
     color: black; 
     border: 2px solid #4CAF50;
   }
   
-  .button1:hover {
+  .button1:hover { /* When hovering over the button, style it using this class */
     background-color: #4CAF50;
     color: white;
   }
+  /* The rest of the following syntax follow the same principles, but simply change the
+     colours for a variety of different styled buttons */
   
   .button2 {
       background-color: transparent;
@@ -87,11 +81,36 @@
     color: white;
   }
 
+/*************************************************************************/
+
 *{
     padding: 0;
     margin: 0;
 }
-#gameContainer {
+
+/**************************************************************************
+ * Stylizes text within the different menus
+*/ 
+
+#dinoDash { /* Stylizes the dinoDash text element within menu.php */
+    text-align: center; 
+    font-size: 300%;
+    font-family: monospace;
+}
+
+#text { /* Stylizes the text elements within all the php files */
+    text-align: center;
+    font-size: 150%;
+    font-family: monospace;
+}
+
+/*************************************************************************/
+
+/**************************************************************************
+ * Syntax to stylize the main game 
+ */
+
+#gameContainer { /* The background to be used for all menus of the game */
     background-image: url(bg.png);
     background-size: 100vw 100vh;
     background-attachment: fixed;
@@ -99,7 +118,7 @@
     height: 100vh;
 }
 
-#dino {
+#dino { /* The size, image and position of the player's dino in the game */
     width: 150px;
     height: 75px;
     background-image: url(dino1.png);
@@ -108,7 +127,7 @@
     top: 365px;
 }
 
-#dragon {
+#dragon { /* The size, image and position of the bottom obstacle */
     width: 30px;
     height: 20px;
     background-image: url(boulder.png);
@@ -118,7 +137,7 @@
     right: 40px;
 }
 
-#bird {
+#bird { /* The size, image and position of the top obstacle */
     width: 30px;
     height: 20px;
     background-image: url(boulder.png);
@@ -128,7 +147,7 @@
     right: 40px;
 }
 
-#score {
+#score { /* The size, position and styling of the player's score on the screen */
     font-size: 25px;
     color: #54212f;
     position: absolute;
@@ -140,7 +159,8 @@
     font-family: 'Ubuntu', sans-serif;
     color: white;
 }
-#gameOver{
+
+#gameOver{ /* The text styling and position for the game-over text when player loses */ 
     position: relative;
     top:63px;
     font-size: 53px;
@@ -149,7 +169,13 @@
     font-family: monospace;
 }
 
-.scoreboard {
+/***********************************************************************************/
+
+/************************************************************************************
+ *   Stylizes the leaderboard
+ */
+
+.scoreboard { 
     margin-top: 90px;
 }
 
@@ -168,9 +194,15 @@ td, th {
     padding: 8px;
 }
 
-tr:nth-child(even) {
+tr:nth-child(even) { /* For every even row, use this background colour */
     background-color: #058cca;
-}
+} 
+
+/*****************************************************************************/
+
+/******************************************************************************
+ Syntax used to style the menu button texts */
+
 #leaderboard a {
     text-decoration: none;
     color: black;
@@ -201,32 +233,42 @@ tr:nth-child(even) {
     color: black;
 }
 
-@keyframes dinoJump {
-    0% {top: 365px;}
+/***********************************************************************************/
+
+/************************************************************************************
+ Creates animations for the obstacles and dino */
+
+@keyframes dinoJump { /* Animates the dino's jump */
+    0% {top: 365px;} 
     35% {top: 315px;}
     65% {top: 315px;}
     100% {top: 365px;}
 }
 
-@keyframes dinoDuck {
+@keyframes dinoDuck { /* Animates the dino's duck */
     0% {top: 365px;}
     35% {top: 415px;}
     65% {top: 415px;}
     100% {top: 365px;}
 }
 
-@keyframes dragonLeft {
+@keyframes dragonLeft { /* Animates the bottom obstacle */
     0% {left: 95%;}
     100% {left: -40px;}
 }
 
-@keyframes birdLeft {
+@keyframes birdLeft { /* Animates the top obstacle */
     0% {left: 95%;}
     100% {left: -40px;}
 }
+
+/************************************************************************************/
+
+/*************************************************************************************
+ Create classes that use the animations to be used in the javascript file */ 
 
 .animateDino {
-    animation: dinoJump 500ms;
+    animation: dinoJump 500ms; /* The animation takes 500 milliseconds to finish */
 }
 
 .animateDinoDuck {
@@ -234,9 +276,11 @@ tr:nth-child(even) {
 }
 
 .animateDragon {
-    animation: dragonLeft 1s linear;
-}
+    animation: dragonLeft 1s linear; /* The animation takes 1 second to finish and is linear for a */
+}                                    /* smoother animation */
 
 .animateBird {
     animation: birdLeft 1s linear;
 }
+
+/************************************************************************************/

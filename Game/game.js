@@ -1,86 +1,130 @@
-var dino = document.getElementById("dino");
-var dragon = document.getElementById("dragon");
-var bird = document.getElementById("bird");
-music = new Audio("music.mp3")
-gameOverMusic = new Audio("gameover.mp3")
-dead = false;
-music.play()
-currentplayer = '';
+/*********************************************************************************
+ * We initiate several variable to be used within the functions */
 
-// Get new player.
+
+// The following variables are equal to the respective elements in game.php
+var dino = document.getElementById("dino"); 
+var dragon = document.getElementById("dragon"); 
+var bird = document.getElementById("bird");
+
+// Create a variable that contains the music of the game and play it
+music = new Audio("music.mp3")
+music.play()
+// Create a variable that contains the game-over sound effect
+gameOverMusic = new Audio("gameover.mp3")
+
+// Create a boolean variable that tells if a player is dead or not
+dead = false;
+
+// Create a string and int variables for the player name and scores
+currentplayer = '';
+scoreIncrease = 0; // Score that constantly updates while playing
+highScore = 0; // Only updates every time scoreIncrease is higher
+
+/*********************************************************************************/
+
+/*********************************************************************************
+ * Initiate functions */
+
+
+// Get new player by calling the get_player() function
 get_player();
 
-
-function restart() {
-    dead = false;
-    scoreIncrease = 0;
-    highScore;
-    gameOver.innerHTML = "";
-    moveObjects();
-    hit();
-}
-
+// Begin moving the obstacles by calling the moveObjects() function
 moveObjects();
-function moveObjects() {
-setInterval(function(){ // This function randomly goes between the bird and dragon
-    var number = Math.random();
-    if (dead == true) {
-        return;
-    }
-    else if (number <= 0.5){
-        if (dragon.classList == "animateDragon"){
-            return
-        }
-        dragon.classList.add("animateDragon");
-        setTimeout(function(){
-            dragon.classList.remove("animateDragon")
-        }, 1000)
-    }
-    else {
-        if (bird.classList == "animateBird"){
-            return
-        }
-        bird.classList.add("animateBird");
-        setTimeout(function(){
-            bird.classList.remove("animateBird")
-        }, 1000)
-    }
-}, 500)
+
+// Check if the dino (player) gets hit using the hit() function
+hit();
+
+/*********************************************************************************/
+
+/************************************************************************************
+ *  Define the functions */
+
+function get_player() { 
+    /** This function updates the currentplayer variable with the input in the second
+     *  parameter of the prompt() function */ 
+    currentplayer = prompt( "Please enter your name", "" );
 }
 
+function moveObjects() { // This function randomly moves the bird and dragon objects towards the dino
+    setInterval(function(){ // A setInterval is used that runs every 500ms to animate the objects
+        var number = Math.random(); // Create a variable that is randomly given a number
+
+        /* When the player loses/dies, and the dead variable is set to true,
+         * this if statement will pass and return, stopping the animations from continuing 
+         */
+        if (dead == true) {
+            return;
+        }
+        /* Otherwise, if the player is still alive, and the number variable is less than/equal to 0.5,
+         * then we animate the bottom object */
+        else if (number <= 0.5){
+            // When the bottom object already has an animation, we return
+            if (dragon.classList == "animateDragon"){
+                return
+            }
+            // Else we add the animation to the object and remove it after 1 second
+            dragon.classList.add("animateDragon");
+            setTimeout(function(){
+                dragon.classList.remove("animateDragon")
+            }, 1000)
+        }
+        else { // Else, when number is greater than 0.5, we animate the top object
+            // When the top object already has an animation, we return
+            if (bird.classList == "animateBird"){
+                return
+            }
+            // Else we add the animation to the object and remove it after 1 second
+            bird.classList.add("animateBird");
+            setTimeout(function(){
+                bird.classList.remove("animateBird")
+            }, 1000)
+        }
+    }, 500)
+}
+
+// This function detects which keys are being pressed and accordingly animates the dino
 document.onkeydown = function (e) {
     console.log("Key code is: ", e.keyCode)
-    if (e.keyCode == 32) {
+    // When the following keys are pressed, call the dinoJump() function
+    if (e.keyCode == 32) { // Spacebar
         dinoJump();
     }
-    if (e.keyCode == 38) {
+    if (e.keyCode == 38) { // Arrow up
         dinoJump();
     }
-    if (e.keyCode == 87) {
+    if (e.keyCode == 87) { // W
         dinoJump();
     }
-    if (e.keyCode == 83) {
+    // When the following keys are pressed, call the dinoDuck() function
+    if (e.keyCode == 83) { // S
         dinoDuck();
     }
-    if (e.keyCode == 40) {
+    if (e.keyCode == 40) { // Arrow down
         dinoDuck();
     }
 }
 
-function dinoJump() { // Makes dino jump 
+function dinoJump() { // This function makes the dino jump
+    // If the player is dead, return so that the dino cant be animated
     if (dead == true) {
         return;
     }
+    /* Else, if the dino is already being animated, return so that the animation is completed
+     * and dont overlap */
     else if (dino.classList == "animateDino" || dino.classList == "animateDinoDuck"){
         return
     }
+    // Else, animate the dino to jump and then remove it's animation after 500ms
     dino.classList.add("animateDino");
     setTimeout(function(){
         dino.classList.remove("animateDino");
     }, 500);
 }
 
-function dinoDuck() { // Makes dino duck
+function dinoDuck() { // This function makes the dino duck
+    // It uses the same principles as the dinoJump() function
     if (dead == true) {
         return;
     }
@@ -93,45 +137,38 @@ function dinoDuck() { // Makes dino duck
     }, 500);
 }
 
-scoreIncrease = 0;
-highScore = 0;
-var hit = hit()
-function hit(){
-setInterval(function(){ // Ends game and also increases score
-    var dragonLeft = parseInt(window.getComputedStyle(dragon).getPropertyValue("left"));
-    var birdLeft = parseInt(window.getComputedStyle(bird).getPropertyValue("left"));
-    var dinoTop = parseInt(window.getComputedStyle(dino).getPropertyValue("top"));
-    if ((dragonLeft<150 && dragonLeft>0 && dinoTop>= 345) || (birdLeft<150 && birdLeft>0 && dinoTop<= 385)){
-        dead = true;
-        gameOverMusic.play();
-        gameOver.innerHTML = "Game Over! Click on the Restart Button"
-        if (parseInt(scoreIncrease)>highScore){
-            highScore = parseInt(scoreIncrease)
-            update_leaderboard(currentplayer , highScore);
+function hit(){ // This function checks if the player is hit by either one of the obstacles
+    setInterval(function(){ // Ends game and also increases score
+        var dragonLeft = parseInt(window.getComputedStyle(dragon).getPropertyValue("left"));
+        var birdLeft = parseInt(window.getComputedStyle(bird).getPropertyValue("left"));
+        var dinoTop = parseInt(window.getComputedStyle(dino).getPropertyValue("top"));
+        if ((dragonLeft<150 && dragonLeft>0 && dinoTop>= 345) || (birdLeft<150 && birdLeft>0 && dinoTop<= 385)){
+            dead = true;
+            gameOverMusic.play();
+            gameOver.innerHTML = "Game Over! Click on the Restart Button"
+            if (parseInt(scoreIncrease)>highScore){
+                highScore = parseInt(scoreIncrease)
+                update_leaderboard(currentplayer , highScore);
+            }
+            delete scoreIncrease; moveObjects = undefined;
+            return;
         }
-        delete scoreIncrease; moveObjects = undefined;
-        return;
-    }
-    else {
-        scoreIncrease += 1/100;
-        Math.floor(scoreIncrease)
-        increaseScore(scoreIncrease)
-    }
-}, 10)
+        else {
+            scoreIncrease += 1/100;
+            Math.floor(scoreIncrease)
+            increaseScore(scoreIncrease)
+        }
+    }, 10)
 }
 
 function increaseScore(scoreIncrease){
     document.getElementById("score").innerHTML = "Score : " + parseInt(scoreIncrease);
 }
 
-function get_player() {
-    currentplayer = prompt( "Please enter your name", "" );
-}
-
 function update_leaderboard( player,score ) { 
     jQuery.ajax({
-        url:"functions.php",    //the page containing php script
-        type: "post",    //request type,
+        url:"functions.php", //the page containing php script
+        type: "post",        //request type,
         dataType: 'json',
         data: { player: player, score: score, action:'add_score' },
         success:function(result){
@@ -140,3 +177,11 @@ function update_leaderboard( player,score ) {
     });
 }
 
+function restart() {
+    dead = false;
+    scoreIncrease = 0;
+    highScore;
+    gameOver.innerHTML = "";
+    moveObjects();
+    hit();
+}
