@@ -138,22 +138,35 @@ function dinoDuck() { // This function makes the dino duck
 }
 
 function hit(){ // This function checks if the player is hit by either one of the obstacles
-    setInterval(function(){ // Ends game and also increases score
+    setInterval(function(){ // A setInterval is used to run every 10ms to check if the dino is hit
+
+        // Create 3 int variables that contain the locations of the 2 objects and dino  
         var dragonLeft = parseInt(window.getComputedStyle(dragon).getPropertyValue("left"));
         var birdLeft = parseInt(window.getComputedStyle(bird).getPropertyValue("left"));
         var dinoTop = parseInt(window.getComputedStyle(dino).getPropertyValue("top"));
+
+        // Check if either one of the objects is in contact with the dino 
         if ((dragonLeft<150 && dragonLeft>0 && dinoTop>= 345) || (birdLeft<150 && birdLeft>0 && dinoTop<= 385)){
+            
+            /* If its true, set dead to true, play the game-over music and display the
+             * game-over text by accessing the element "gameOver" in game.php*/
             dead = true;
             gameOverMusic.play();
             gameOver.innerHTML = "Game Over! Click on the Restart Button"
+
+            // If scoreIncrease is greater than the current highscore
             if (parseInt(scoreIncrease)>highScore){
+                /* Set that int value as the new highscore and call the 
+                 * update_leaderboard() function to update the leaderboards */
                 highScore = parseInt(scoreIncrease)
                 update_leaderboard(currentplayer , highScore);
             }
+
+            // Then delete scoreIncrease, set moveObjects to undefined and then return
             delete scoreIncrease; moveObjects = undefined;
             return;
         }
-        else {
+        else { // Else, if dino isnt hit, increase score by 1 and call the increaseScore() function
             scoreIncrease += 1/100;
             Math.floor(scoreIncrease)
             increaseScore(scoreIncrease)
@@ -161,10 +174,12 @@ function hit(){ // This function checks if the player is hit by either one of th
     }, 10)
 }
 
+// This function increases the "score" element in game.php 
 function increaseScore(scoreIncrease){
     document.getElementById("score").innerHTML = "Score : " + parseInt(scoreIncrease);
 }
 
+// This function updates the leaderboard
 function update_leaderboard( player,score ) { 
     jQuery.ajax({
         url:"functions.php", //the page containing php script
@@ -177,7 +192,14 @@ function update_leaderboard( player,score ) {
     });
 }
 
-function restart() {
+/*********************************************************************************/
+
+/*********************************************************************************
+ * Function to restart the game */
+
+function restart() { // This function restarts the game
+
+    // All the necessary variables/functions are reset or called to run the game again
     dead = false;
     scoreIncrease = 0;
     highScore;
@@ -185,3 +207,5 @@ function restart() {
     moveObjects();
     hit();
 }
+
+/**********************************************************************************/
