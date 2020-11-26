@@ -105,7 +105,7 @@ setInterval(function(){ // Ends game and also increases score
         dead = true;
         gameOverMusic.play();
         gameOver.innerHTML = "Game Over! Click on the Restart Button"
-        if (scoreIncrease>highScore){
+        if (parseInt(scoreIncrease)>highScore){
             highScore = parseInt(scoreIncrease)
             update_leaderboard(currentplayer , highScore);
         }
