@@ -7,7 +7,10 @@ that's not part of the chrome game - the duck feature! It allows for more intens
 The game is made to look like a more modern web game, utilizing different menus and models, while also including leaderboards; Here, a player's highscores will be saved
 and displayed on a database for everyone to see. This will indefinitely encourage players to play more and try to improve their scores!
 
-# Dino Dash game Link:
+# Dino Dash Game Demo:
+https://youtu.be/FmWw_syDvi0
+
+# Dino Dash Game Link:
 https://dino-dash.herokuapp.com/menu.php
 
 
